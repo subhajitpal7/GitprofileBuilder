@@ -1,0 +1,26 @@
+[project]
+name = "GitprofileBuilder"
+version = "0.1.0"
+description = "This is a project to create a git profile based out of resume"
+authors = [
+    {name = "Subhajit Pal", email = "subhajitpal7@gmail.com"},
+]
+dependencies = [
+    "langchain>=0.2.5",
+    "langchain-community>=0.2.5",
+    "pypdfium2>=4.30.0",
+    "gpt4all>=2.7.0",
+    "faiss-gpu>=1.7.2",
+    "faiss-cpu>=1.8.0.post1",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
