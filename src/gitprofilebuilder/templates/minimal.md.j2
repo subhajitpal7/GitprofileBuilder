@@ -1,0 +1,86 @@
+# Hi there 👋, I'm {{ personal_info.name }}
+
+{{ summary }}
+
+{% if skills %}
+## 🛠️ Skills
+
+{% if skills.technical_skills %}
+### Technical Skills
+{{ skills.technical_skills | map('code_format') | join(' | ') }}
+{% endif %}
+
+{% if skills.soft_skills %}
+### Soft Skills
+{{ skills.soft_skills | map('code_format') | join(' | ') }}
+{% endif %}
+{% endif %}
+
+{% if work_experience %}
+## 💼 Experience
+
+{% for exp in work_experience %}
+### {{ exp.company }} - {{ exp.title }}
+{{ exp.duration }}
+
+{% for resp in exp.responsibilities %}
+- {{ resp }}
+{% endfor %}
+
+{% endfor %}
+{% endif %}
+
+{% if education %}
+## 📚 Education
+
+{% for edu in education %}
+### {{ edu.degree }}
+{{ edu.institution }} ({{ edu.graduation_year }})
+{% endfor %}
+{% endif %}
+
+{% if certifications %}
+## 🏆 Certifications
+
+{% for cert in certifications %}
+- {{ cert }}
+{% endfor %}
+{% endif %}
+
+{% if enhanced %}
+{% if enhanced.tagline %}
+---
+*{{ enhanced.tagline }}*
+{% endif %}
+
+{% if enhanced.current_focus %}
+## 🎯 Current Focus
+{% for focus in enhanced.current_focus %}
+- {{ focus }}
+{% endfor %}
+{% endif %}
+
+{% if enhanced.github_activity_highlights %}
+## 📊 GitHub Activity
+{% for highlight in enhanced.github_activity_highlights %}
+- {{ highlight }}
+{% endfor %}
+{% endif %}
+
+{% if enhanced.custom_sections %}
+{% for section in enhanced.custom_sections %}
+## {{ section.title }}
+{% for content in section.content %}
+- {{ content }}
+{% endfor %}
+{% endfor %}
+{% endif %}
+{% endif %}
+
+{% if personal_info.email or personal_info.phone or personal_info.location %}
+## 📫 Contact
+
+{% if personal_info.email %}📧 {{ personal_info.email }}{% endif %}
+{% if personal_info.phone %}📱 {{ personal_info.phone }}{% endif %}
+{% if personal_info.location %}📍 {{ personal_info.location }}{% endif %}
+{% endif %}

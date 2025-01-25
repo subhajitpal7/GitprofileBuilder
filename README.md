@@ -1,49 +1,174 @@
-# Hi there 👋, I'm Subhajit Pal
+# GitHub Profile Builder 🚀
 
-Experienced Python Developer with 5+ years of experience in designing and building efficient software solutions. Proficient in Python programming, data processing, and automation, with a proven track record of optimizing system performance. Known for delivering impactful results through innovative problem-solving and collaborating with teams to drive business success.
+An intelligent tool that generates beautiful GitHub profile READMEs from your resume using AI. Transform your professional experience into an engaging GitHub profile with just one command!
 
-## 🛠️ Skills
+## Features ✨
 
-### Technical Skills
-`Python Programming` | `Data Processing` | `Automation` | `Database (MySQL, SQLAlchemy, MongoDB)` | `SDLC in Agile methodologies` | `Postgres Database` | `Git & Githubs` | `Docker` | `Jenkins` | `Linux (Server)` | `Kubernetes` | `Apache Airflow` | `Data Science` | `Data Collection` | `Data Analysis` | `Data Visualization`
+- **Resume Parsing**: Automatically extracts information from PDF resumes
+- **AI-Powered**: Uses Google's Gemini Pro to structure and enhance your profile
+- **Multiple Templates**: Choose from different templates:
+  - Minimal: Clean and simple layout
+  - Modern: Feature-rich layout with badges and GitHub stats
+- **Customizable**: Easy to add new templates using Jinja2
+- **Smart Enhancement**: Automatically adds:
+  - Engaging taglines
+  - Impact statements
+  - Skill categorization
+  - GitHub activity highlights
+  - Custom sections with emojis
 
-### Soft Skills
-`Mentorship` | `Technical Advisor`
+## Installation 🛠️
 
-## 💼 Experience
+1. Clone the repository:
+```bash
+git clone https://github.com/subhajitpal7/GitprofileBuilder.git
+cd GitprofileBuilder
+```
 
-### Software Engineer at Qualcomm India Private Limited
-*February 2023 - Present*
+2. Create a virtual environment and activate it:
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Linux/Mac
+# or
+.venv\Scripts\activate  # Windows
+```
 
-- Developed a CLI and Python API for efficient regression management, supporting 100+ developers to run 3,000+ daily regressions.
-- Built a Gen AI-powered chatbot with Prompt Engineering, reducing manual regression data review by 30%.
-- Optimized a GPU binary file app for the Silicon Team, improving page load performance by 3x using caching.
-- Implemented a generic Airflow DAG for file cleanup, minimizing manual infrastructure maintenance.
-- Created a Cookiecutter template with Ruff and Black checkers, streamlining package development and enforcing coding standards.
+3. Install dependencies:
+```bash
+pip install -e .
+```
 
-### Software Engineer at Oracle Cerner (Cerner Healthcare)
-*November 2019 - April 2023*
+4. Set up environment variables:
+Create a `.env` file in the project root:
+```env
+GOOGLE_API_KEY=your_google_api_key_here
+```
 
-- Developed and implemented a topic modeling solution for unstructured confluence wiki-pages, enabling smoother access to documentation.
-- Created and maintained a DevSecOps solution for automated OWASP scanning, adopted across 46 projects organization-wide.
-- Performed a POC on GitHub migration for legacy code from Accurev Version Control System, adopted across 32 projects organization-wide.
+## Usage 💻
 
+### Python API
 
-## 🎓 Education
+You can use GitProfile Builder directly in your Python code:
 
-### Executive Post Graduate Programme in AI/ML
-IIIT Bangalore - 2023
+```python
+from gitprofilebuilder import generate_and_save_readme
 
-### Bachelors in Technology (Computer Science)
-Meghnad Saha Institute of Technology - 2019
+# Basic usage with defaults
+generate_and_save_readme(
+    resume_path="resume.pdf"  # Will use minimal template and save as profile_readme.md
+)
 
+# Advanced usage with all options
+result = generate_and_save_readme(
+    resume_path="resume.pdf",
+    output_path="custom_profile.md",
+    template_name="modern",
+    verbose=True  # Returns processing data when True
+)
 
-## 📜 Certifications
+if result:  # Only available when verbose=True
+    print("Resume Text:", result['resume_text'])
+    print("Structured Data:", result['structured_data'])
+    print("Enhanced Data:", result['enhanced'])
+```
 
-- THANKQ
-- Bravo Award
+For lower-level control, you can use the ProfileGenerator class:
 
-## 📫 How to reach me
+```python
+from gitprofilebuilder import ProfileGenerator
 
-- 📧 Email: jobs.forsubhajit.com@gmail.com
-- 📍 Location: Kolkata, India
+# Initialize the generator
+generator = ProfileGenerator(verbose=True)
+
+# Step by step generation
+resume_text = generator.extract_resume_text("resume.pdf")
+structured_data = generator.extract_structured_data()
+enhanced_data = generator.enhance_profile_data()
+
+# Or generate everything at once
+profile_data = generator.generate_profile("resume.pdf")
+```
+
+### Command Line Interface
+
+The tool provides a rich command-line interface with the following commands:
+
+```bash
+# Generate a profile README from your resume
+gitprofilebuilder generate RESUME_PATH [OPTIONS]
+
+# List available templates
+gitprofilebuilder templates
+```
+
+### Generate Command Options
+
+```bash
+Options:
+  -o, --output PATH     Output path for the generated README.md file [default: profile_readme.md]
+  -t, --template TEXT   Template style to use for the profile [default: minimal]
+  -f, --force          Overwrite output file if it already exists
+  -v, --verbose        Show detailed processing information
+  --help              Show this message and exit
+```
+
+### Examples
+
+Generate with default options:
+```bash
+gitprofilebuilder generate resume.pdf
+```
+
+Use modern template with custom output:
+```bash
+gitprofilebuilder generate resume.pdf -t modern -o github_profile.md
+```
+
+Force overwrite existing file with verbose output:
+```bash
+gitprofilebuilder generate resume.pdf -f -v
+```
+
+View available templates:
+```bash
+gitprofilebuilder templates
+```
+
+## Templates 🎨
+
+### Available Templates
+
+1. **Minimal** (`minimal.md.j2`)
+   - Clean and simple layout
+   - Focus on essential information
+   - Perfect for minimalists
+
+2. **Modern** (`modern.md.j2`)
+   - Rich feature set
+   - GitHub stats integration
+   - Skill badges
+   - Activity graphs
+
+### Creating Custom Templates
+
+1. Add your template to `src/gitprofilebuilder/templates/`
+2. Use Jinja2 syntax
+3. Available variables:
+   - `personal_info`: Name, email, location
+   - `summary`: Professional summary
+   - `skills`: Technical and soft skills
+   - `work_experience`: Work history
+   - `education`: Educational background
+   - `enhanced`: AI-generated enhancements
+
+## Contributing 🤝
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License 📝
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

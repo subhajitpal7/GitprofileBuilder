@@ -1,0 +1,128 @@
+<!--
+⚡️ Quick Tip: You're viewing {{ personal_info.name }}'s GitHub Profile!
+-->
+
+<div align="center">
+  <h1>
+    {{ random_greeting }} I'm {{ personal_info.name }}
+    <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px"/>
+  </h1>
+  
+  {% if enhanced and enhanced.tagline %}
+  <h3>{{ enhanced.tagline }}</h3>
+  {% endif %}
+  
+  <p>{{ summary }}</p>
+</div>
+
+---
+
+{% if enhanced and enhanced.current_focus %}
+### 🔭 Currently Working On
+{% for focus in enhanced.current_focus %}
+- {{ focus }}
+{% endfor %}
+{% endif %}
+
+{% if skills %}
+### 🛠️ Languages and Tools
+
+{% if skills.technical_skills %}
+<div>
+  {% for skill in skills.technical_skills %}
+  <img src="https://img.shields.io/badge/-{{ skill }}-{{ random_color() }}?style=flat-square&logo={{ skill | lower }}&logoColor=white" alt="{{ skill }}"/>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% if enhanced and enhanced.skill_categories %}
+#### Expertise Areas
+{% for category, skills in enhanced.skill_categories.items() %}
+**{{ category }}**: {{ skills | join(', ') }}
+{% endfor %}
+{% endif %}
+
+{% if skills.soft_skills %}
+#### 🤝 Soft Skills
+{{ skills.soft_skills | join(' • ') }}
+{% endif %}
+{% endif %}
+
+{% if work_experience %}
+### 💼 Experience Highlights
+
+{% for exp in work_experience %}
+<details>
+<summary><strong>{{ exp.title }} at {{ exp.company }}</strong> ({{ exp.duration }})</summary>
+
+{% for resp in exp.responsibilities %}
+- {{ resp }}
+{% endfor %}
+</details>
+{% endfor %}
+{% endif %}
+
+{% if education %}
+### 📚 Education
+{% for edu in education %}
+- **{{ edu.degree }}** from {{ edu.institution }} ({{ edu.graduation_year }})
+{% endfor %}
+{% endif %}
+
+{% if enhanced %}
+{% if enhanced.github_activity_highlights %}
+### 📊 GitHub Stats & Activity
+{% for highlight in enhanced.github_activity_highlights %}
+- {{ highlight }}
+{% endfor %}
+
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username={{ github_username | default('your-username') }}&show_icons=true&theme=radical" alt="GitHub Stats"/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user={{ github_username | default('your-username') }}&theme=radical" alt="GitHub Streak"/>
+</div>
+{% endif %}
+
+{% if enhanced.custom_sections %}
+{% for section in enhanced.custom_sections %}
+### {{ section.title }}
+{% for content in section.content %}
+- {{ content }}
+{% endfor %}
+{% endfor %}
+{% endif %}
+
+{% if enhanced.fun_facts %}
+### ⚡ Fun Facts
+{% for fact in enhanced.fun_facts %}
+- {{ fact }}
+{% endfor %}
+{% endif %}
+{% endif %}
+
+{% if personal_info.email or personal_info.phone or personal_info.location %}
+### 📫 Connect With Me
+
+<div align="center">
+  {% if personal_info.email %}
+  <a href="mailto:{{ personal_info.email }}">
+    <img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Email"/>
+  </a>
+  {% endif %}
+  {% if personal_info.location %}
+  <img src="https://img.shields.io/badge/Location-{{ personal_info.location | urlencode }}-4A90E2?style=flat-square" alt="Location"/>
+  {% endif %}
+</div>
+{% endif %}
+
+{% if certifications %}
+### 🏆 Certifications
+{% for cert in certifications %}
+- {{ cert }}
+{% endfor %}
+{% endif %}
+
+---
+
+<div align="center">
+  <i>{{ enhanced.impact_statement if enhanced and enhanced.impact_statement else "Let's connect and create something amazing together!" }}</i>
+</div>
