@@ -39,12 +39,6 @@ ENV/
 *.swo
 .DS_Store
 
-# Project specific
-README.md
-!example_README.md
-*.pdf
-!example_resume.pdf
-
 # Test coverage
 htmlcov/
 .tox/

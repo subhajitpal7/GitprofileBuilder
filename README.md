@@ -95,10 +95,10 @@ The tool provides a rich command-line interface with the following commands:
 
 ```bash
 # Generate a profile README from your resume
-gitprofilebuilder generate RESUME_PATH [OPTIONS]
+gitprofile generate RESUME_PATH [OPTIONS]
 
 # List available templates
-gitprofilebuilder templates
+gitprofile templates
 ```
 
 ### Generate Command Options
@@ -116,22 +116,22 @@ Options:
 
 Generate with default options:
 ```bash
-gitprofilebuilder generate resume.pdf
+gitprofile generate resume.pdf
 ```
 
 Use modern template with custom output:
 ```bash
-gitprofilebuilder generate resume.pdf -t modern -o github_profile.md
+gitprofile generate resume.pdf -t modern -o github_profile.md
 ```
 
 Force overwrite existing file with verbose output:
 ```bash
-gitprofilebuilder generate resume.pdf -f -v
+gitprofile generate resume.pdf -f -v
 ```
 
 View available templates:
 ```bash
-gitprofilebuilder templates
+gitprofile templates
 ```
 
 ## Templates 🎨
