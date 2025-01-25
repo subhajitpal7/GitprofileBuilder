@@ -1,6 +1,6 @@
 [project]
 name = "gitprofilebuilder"
-version = "0.1.0"
+version = "0.1.2"
 description = "Generate beautiful GitHub profile READMEs from your resume using AI"
 authors = [
     {name = "Subhajit Pal", email = "subhajitpal7@gmail.com"},
@@ -16,6 +16,7 @@ dependencies = [
     "tqdm>=4.66.0",
     "rich>=13.7.0",
     "jinja2>=3.1.0",
+    "twine>=6.1.0",
 ]
 requires-python = ">=3.11"
 readme = "README.md"
@@ -41,7 +42,7 @@ Repository = "https://github.com/subhajitpal7/GitprofileBuilder.git"
 Issues = "https://github.com/subhajitpal7/GitprofileBuilder/issues"
 
 [project.scripts]
-gitprofile = "gitprofilebuilder.main:main"
+gitprofile = "gitprofilebuilder.cli:main"
 
 [build-system]
 requires = ["pdm-backend"]

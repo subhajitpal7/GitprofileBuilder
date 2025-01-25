@@ -4,60 +4,65 @@
 
 <div align="center">
   <h1>
-    <bound method TemplateManager._random_greeting of <gitprofilebuilder.templates.TemplateManager object at 0x7fa7519c6e10>> I'm Subhajit Pal
+    <bound method TemplateManager._random_greeting of <gitprofilebuilder.templates.TemplateManager object at 0x7f8dc681bf80>> I'm Subhajit Pal
     <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px"/>
   </h1>
   
-  <h3>Python wizard crafting innovative software solutions that empower businesses and enhance user experiences.</h3>
+  <h3>Python Architect | AI/ML Enthusiast | Passionate about building scalable and efficient software solutions</h3>
   
-  <p>Enthusiastic Python Developer with 5+ years of experience in designing and building efficient software solutions. Proficient in Python programming, data processing, and automation, with a proven track record of optimizing system performance. Known for delivering impactful results through innovative problem-solving and collaborating with teams to drive business success.</p>
+  <p>Experienced Python Developer with 5+ years of experience in designing and building efficient software solutions.</p>
 </div>
 
 ---
 
 ### 🔭 Currently Working On
-- Cloud Computing
-- DevOps Automation
-- Data Analytics
+- Full-stack development
+- Data analytics
+- DevOps
 
 ### 🛠️ Languages and Tools
 
 <div>
-  <img src="https://img.shields.io/badge/-Python-96CEB4?style=flat-square&logo=python&logoColor=white" alt="Python"/>
-  <img src="https://img.shields.io/badge/-SQL-F1C40F?style=flat-square&logo=sql&logoColor=white" alt="SQL"/>
-  <img src="https://img.shields.io/badge/-Langchain-9B59B6?style=flat-square&logo=langchain&logoColor=white" alt="Langchain"/>
-  <img src="https://img.shields.io/badge/-Click-FF6B6B?style=flat-square&logo=click&logoColor=white" alt="Click"/>
-  <img src="https://img.shields.io/badge/-FastAPI-3498DB?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI"/>
-  <img src="https://img.shields.io/badge/-Quartz-9B59B6?style=flat-square&logo=quartz&logoColor=white" alt="Quartz"/>
-  <img src="https://img.shields.io/badge/-OpenAPI-1ABC9C?style=flat-square&logo=openapi&logoColor=white" alt="OpenAPI"/>
-  <img src="https://img.shields.io/badge/-LangGraph-E67E22?style=flat-square&logo=langgraph&logoColor=white" alt="LangGraph"/>
-  <img src="https://img.shields.io/badge/-Pytest-F1C40F?style=flat-square&logo=pytest&logoColor=white" alt="Pytest"/>
-  <img src="https://img.shields.io/badge/-Pandas-3498DB?style=flat-square&logo=pandas&logoColor=white" alt="Pandas"/>
-  <img src="https://img.shields.io/badge/-Ruff-D4A5A5?style=flat-square&logo=ruff&logoColor=white" alt="Ruff"/>
-  <img src="https://img.shields.io/badge/-Black-E67E22?style=flat-square&logo=black&logoColor=white" alt="Black"/>
-  <img src="https://img.shields.io/badge/-Git-96CEB4?style=flat-square&logo=git&logoColor=white" alt="Git"/>
-  <img src="https://img.shields.io/badge/-Github-45B7D1?style=flat-square&logo=github&logoColor=white" alt="Github"/>
-  <img src="https://img.shields.io/badge/-Github Actions-FF6B6B?style=flat-square&logo=github actions&logoColor=white" alt="Github Actions"/>
-  <img src="https://img.shields.io/badge/-Airflow-E67E22?style=flat-square&logo=airflow&logoColor=white" alt="Airflow"/>
-  <img src="https://img.shields.io/badge/-Jenkins-9B59B6?style=flat-square&logo=jenkins&logoColor=white" alt="Jenkins"/>
-  <img src="https://img.shields.io/badge/-Kafka-1ABC9C?style=flat-square&logo=kafka&logoColor=white" alt="Kafka"/>
+  <img src="https://img.shields.io/badge/-Python Programming-D4A5A5?style=flat-square&logo=python programming&logoColor=white" alt="Python Programming"/>
+  <img src="https://img.shields.io/badge/-Data Processing-3498DB?style=flat-square&logo=data processing&logoColor=white" alt="Data Processing"/>
+  <img src="https://img.shields.io/badge/-Automation-3498DB?style=flat-square&logo=automation&logoColor=white" alt="Automation"/>
+  <img src="https://img.shields.io/badge/-Database (MySQL, SQLAlchemy, MongoDB)-96CEB4?style=flat-square&logo=database (mysql, sqlalchemy, mongodb)&logoColor=white" alt="Database (MySQL, SQLAlchemy, MongoDB)"/>
+  <img src="https://img.shields.io/badge/-SDLC in Agile methodologies-45B7D1?style=flat-square&logo=sdlc in agile methodologies&logoColor=white" alt="SDLC in Agile methodologies"/>
+  <img src="https://img.shields.io/badge/-Software Development-F1C40F?style=flat-square&logo=software development&logoColor=white" alt="Software Development"/>
+  <img src="https://img.shields.io/badge/-Postgres Database-1ABC9C?style=flat-square&logo=postgres database&logoColor=white" alt="Postgres Database"/>
+  <img src="https://img.shields.io/badge/-Git & Github-3498DB?style=flat-square&logo=git & github&logoColor=white" alt="Git & Github"/>
+  <img src="https://img.shields.io/badge/-Devops: Docker, Jenkins-E67E22?style=flat-square&logo=devops: docker, jenkins&logoColor=white" alt="Devops: Docker, Jenkins"/>
+  <img src="https://img.shields.io/badge/-Linux (Server)-D4A5A5?style=flat-square&logo=linux (server)&logoColor=white" alt="Linux (Server)"/>
+  <img src="https://img.shields.io/badge/-Basic knowledge of Kubernetes-FF6B6B?style=flat-square&logo=basic knowledge of kubernetes&logoColor=white" alt="Basic knowledge of Kubernetes"/>
+  <img src="https://img.shields.io/badge/-Apache Airflow-F1C40F?style=flat-square&logo=apache airflow&logoColor=white" alt="Apache Airflow"/>
+  <img src="https://img.shields.io/badge/-Data Science-FF6B6B?style=flat-square&logo=data science&logoColor=white" alt="Data Science"/>
+  <img src="https://img.shields.io/badge/-Data Collection-9B59B6?style=flat-square&logo=data collection&logoColor=white" alt="Data Collection"/>
+  <img src="https://img.shields.io/badge/-Data Analysis-E67E22?style=flat-square&logo=data analysis&logoColor=white" alt="Data Analysis"/>
+  <img src="https://img.shields.io/badge/-Data Visualization-E67E22?style=flat-square&logo=data visualization&logoColor=white" alt="Data Visualization"/>
 </div>
 
 #### Expertise Areas
-**Data Science**: Pandas, Ruff, Black
-**DevOps**: Git, Github, Github Actions, Airflow, Jenkins, Kafka
+**Core Competencies**: Python Programming, Data Processing, Automation, SDLC in Agile methodologies, Software Development
+**Database Expertise**: Postgres Database, MySQL, SQLAlchemy, MongoDB
+**DevOps Proficiency**: Git & Github, Devops: Docker, Jenkins, Linux (Server), Basic knowledge of Kubernetes, Apache Airflow
+**Data Science Skills**: Data Science, Data Collection, Data Analysis, Data Visualization
 
+#### 🤝 Soft Skills
+Mentorship • Technical Advisor
 
 ### 💼 Experience Highlights
 
 <details>
-<summary><strong>Senior Engineer(GPU InfraOps) at Qualcomm Pvt. Ltd.</strong> (May '23 - Present)</summary>
+<summary><strong>Software Engineer at Qualcomm India Private Limited</strong> (02/05/2023 – Current)</summary>
 
-- Lead the development and enhancement of tools and infrastructure in alignment with standardized norms.
-- Drive increased developer throughput, ensuring high efficiency and performance across the team.
+- Developed a CLI and Python API for efficient regression management, supporting 100+ developers to run 300+ daily regressions.
+- Built a Gen AI-powered chatbot with Prompt Engineering, reducing manual regression data review by 30%.
+- Optimized a GPU binary file app for the Silicon Team, improving page load performance by 3x using caching.
+- Implemented a generic Airflow DAG for file cleanup, minimizing manual infrastructure maintenance.
+- Created a Cookiecutter template with Ruff and Black checkers, streamlining package development and enforcing coding standards.
 </details>
 <details>
-<summary><strong>Software Engineer II(ML Division) at Oracle Cerner(Formerly Cerner Healthcare)</strong> (Feb '19 - Apr '23)</summary>
+<summary><strong>Software Engineer at Cerner Healthcare</strong> (11/02/2019 – 28/04/2023)</summary>
 
 - Developed and implemented a topic modeling solution for unstructured confluence wiki-pages, enabling smoother access to documentation.
 - Created and maintained a DevSecOps solution for automated OWASP scanning, adopted across 46 projects organization-wide.
@@ -65,30 +70,33 @@
 </details>
 
 ### 📚 Education
-- **Executive Post Graduate Programme in AI/ML** from IIIT Bangalore (Apr '22 - May '23)
-- **B.Tech in Computer Science** from Maulana Abul Kalam Azad University of Technology (Jun '15 - Jul '19)
+- **Executive Post Graduate Programme in AI/ML** from IIIT Bangalore (01/05/2023)
+- **Bachelors in Technology(Computer Science)** from Meghnad Saha Institute of Technology (01/08/2019)
 
 ### 📊 GitHub Stats & Activity
-- Regular contributor to open-source projects
-- Actively engages in code reviews and discussions
-- Passionate about sharing knowledge through tutorials and documentation
+- 100+ contributions to open-source projects
+- Maintained a perfect 100% code coverage
+- Received 50+ stars on personal repositories
 
 <div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=your-username&show_icons=true&theme=radical" alt="GitHub Stats"/>
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=your-username&theme=radical" alt="GitHub Streak"/>
 </div>
 
-### 💡 Innovative Projects
-- Developed a real-time fraud detection system using machine learning algorithms
-- Built a natural language processing application for sentiment analysis
-### 🎓 Continuous Learning
-- Pursuing a Master's in Artificial Intelligence from Stanford University
-- Attended workshops on cloud computing and data visualization
+### 🏆 Awards & Recognitions
+- THANKQ
+- Bravo Award
+### 📚 Education & Certifications
+- Executive Post Graduate Programme in AI/ML - IIIT Bangalore (01/05/2023)
+- Bachelors in Technology(Computer Science) - Meghnad Saha Institute of Technology (01/08/2019)
+### 🗣️ Languages
+- English (Fluent)
+- Hindi (Native)
 
 ### ⚡ Fun Facts
-- Enjoys solving puzzles and brain teasers
-- Has a knack for photography and capturing moments
-- Loves traveling and exploring new cultures
+- Enjoys solving complex puzzles
+- Has a pet parrot named Kiwi
+- Loves experimenting with new technologies
 
 ### 📫 Connect With Me
 
@@ -96,16 +104,15 @@
   <a href="mailto:jobs.forsubhajit.com@gmail.com">
     <img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Email"/>
   </a>
-  <img src="https://img.shields.io/badge/Location-Kolkata,%20IN-4A90E2?style=flat-square" alt="Location"/>
+  <img src="https://img.shields.io/badge/Location-Kolkata,%20India-4A90E2?style=flat-square" alt="Location"/>
 </div>
 
 ### 🏆 Certifications
-- THANQ Award (Delivering Solution before Deadline)
-- CERNER BRAVO Excellence Award
-- Rookie Engineer Award(2019)
+- THANKQ
+- Bravo Award
 
 ---
 
 <div align="center">
-  <i>Aspiring to revolutionize the tech landscape through transformative AI/ML applications and data-driven insights.</i>
+  <i>Empowering teams with innovative software and AI-driven solutions to enhance productivity and drive business value</i>
 </div>

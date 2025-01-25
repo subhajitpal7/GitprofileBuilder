@@ -17,34 +17,61 @@ An intelligent tool that generates beautiful GitHub profile READMEs from your re
   - GitHub activity highlights
   - Custom sections with emojis
 
-## Installation 🛠️
+## Installation 🚀
 
-1. Clone the repository:
+### Using pip
+
 ```bash
-git clone https://github.com/subhajitpal7/GitprofileBuilder.git
-cd GitprofileBuilder
+# Install the latest stable version
+pip install gitprofilebuilder
+
+# Or install from TestPyPI (for pre-release versions)
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ gitprofilebuilder
 ```
 
-2. Create a virtual environment and activate it:
+### Prerequisites
+- Python 3.11+
+- A Google AI API key (for AI-powered resume processing)
+
+### Setting Up API Key
+
+1. Get a Google AI API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Set the API key as an environment variable:
+
 ```bash
-python -m venv .venv
-source .venv/bin/activate  # Linux/Mac
-# or
-.venv\Scripts\activate  # Windows
+# For Linux/macOS
+export GOOGLE_API_KEY='your_api_key_here'
+
+# For Windows (PowerShell)
+$env:GOOGLE_API_KEY='your_api_key_here'
 ```
 
-3. Install dependencies:
-```bash
-pip install -e .
-```
+Or create a `.env` file in your project directory:
 
-4. Set up environment variables:
-Create a `.env` file in the project root:
-```env
-GOOGLE_API_KEY=your_google_api_key_here
+```
+GOOGLE_API_KEY=your_api_key_here
 ```
 
 ## Usage 💻
+
+### CLI Usage
+
+```bash
+# Generate GitHub profile README
+gitprofile /path/to/resume.pdf
+
+# Specify output file and template
+gitprofile /path/to/resume.pdf -o my_profile.md -t modern
+
+# Show verbose output
+gitprofile /path/to/resume.pdf -v
+```
+
+### Options
+- `-o, --output`: Specify output file path (default: `profile_readme.md`)
+- `-t, --template`: Choose template style (default: `minimal`)
+- `-f, --force`: Overwrite existing output file
+- `-v, --verbose`: Show detailed processing information
 
 ### Python API
 
@@ -87,29 +114,6 @@ enhanced_data = generator.enhance_profile_data()
 
 # Or generate everything at once
 profile_data = generator.generate_profile("resume.pdf")
-```
-
-### Command Line Interface
-
-The tool provides a rich command-line interface with the following commands:
-
-```bash
-# Generate a profile README from your resume
-gitprofile generate RESUME_PATH [OPTIONS]
-
-# List available templates
-gitprofile templates
-```
-
-### Generate Command Options
-
-```bash
-Options:
-  -o, --output PATH     Output path for the generated README.md file [default: profile_readme.md]
-  -t, --template TEXT   Template style to use for the profile [default: minimal]
-  -f, --force          Overwrite output file if it already exists
-  -v, --verbose        Show detailed processing information
-  --help              Show this message and exit
 ```
 
 ### Examples
