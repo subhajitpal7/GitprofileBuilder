@@ -37,8 +37,9 @@ def build_readme_from_resume(pdf_path: str) -> Dict:
     Returns:
         Dict: Structured data extracted from the resume
     """
-    # Validate configuration
-    Config.validate_config()
+    # Get config instance and validate
+    config = Config()
+    config.validate_config()
     
     # Load the document
     resume_text = load_resume(pdf_path)

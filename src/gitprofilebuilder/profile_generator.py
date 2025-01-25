@@ -141,7 +141,7 @@ def enhance_content_with_llm(resume_data: Dict) -> Dict:
     You are a creative GitHub profile enhancer. Given the following resume data, generate engaging and personalized content
     to make the GitHub profile more attractive and memorable. Keep the tone professional yet friendly.
     
-    Resume Data:
+    Resume Text:
     {resume_data}
     
     Please enhance this data by adding the following elements in JSON format:
@@ -168,6 +168,9 @@ def enhance_content_with_llm(resume_data: Dict) -> Dict:
     """
     
     try:
+        # Get config instance
+        config = Config()
+        
         # Setup LLM chain
         prompt = PromptTemplate(template=template, input_variables=["resume_data"])
         llm = ChatGoogleGenerativeAI(model="gemini-pro")
