@@ -96,26 +96,29 @@ def build_readme_from_resume(pdf_path: str) -> Dict:
     except Exception as e:
         raise Exception(f"Failed to parse resume: {str(e)}")
 
-def generate_and_save_readme(pdf_path: str, output_path: str = "README.md") -> None:
+def generate_and_save_readme(pdf_path: str, output_path: str = "README.md", 
+                           template: str = "minimal") -> None:
     """
     Generate and save a GitHub profile README from a resume PDF.
     
     Args:
         pdf_path (str): Path to the resume PDF file
         output_path (str, optional): Path where to save the README.md. Defaults to "README.md"
+        template (str, optional): Template style to use ('minimal' or 'modern'). 
+                                Defaults to 'minimal'
     """
     try:
         # Extract structured data from resume
         resume_data = build_readme_from_resume(pdf_path)
         
-        # Generate profile content
-        profile_content = generate_github_profile(resume_data)
+        # Generate profile content with specified template
+        profile_content = generate_github_profile(resume_data, template)
         
         # Save to README.md
         with open(output_path, 'w') as f:
             f.write(profile_content)
             
-        print(f"GitHub profile {output_path} has been generated successfully!")
+        print(f"GitHub profile {output_path} has been generated successfully using {template} template!")
         
     except Exception as e:
         print(f"Error generating profile: {str(e)}")
@@ -128,9 +131,11 @@ def main():
     parser.add_argument("pdf_path", help="Path to the resume PDF file")
     parser.add_argument("--output", "-o", default="README.md", 
                       help="Output path for README.md (default: README.md)")
+    parser.add_argument("--template", "-t", choices=["minimal", "modern"], default="minimal",
+                      help="Template style to use (default: minimal)")
     
     args = parser.parse_args()
-    generate_and_save_readme(args.pdf_path, args.output)
+    generate_and_save_readme(args.pdf_path, args.output, args.template)
 
 if __name__ == "__main__":
     main()
