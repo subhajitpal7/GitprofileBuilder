@@ -4,13 +4,18 @@ This module handles the process of extracting information from resumes and gener
 attractive GitHub profile READMEs.
 """
 
+import json
+import logging
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_community.document_loaders import PyPDFium2Loader
 from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.prompts import PromptTemplate
-from typing import Dict
+from typing import Dict, Optional
 from gitprofilebuilder.profile_generator import generate_github_profile
 from gitprofilebuilder.config import Config
+
+# Set up logging
+logger = logging.getLogger(__name__)
 
 def load_resume(pdf_path: str) -> str:
     """
@@ -97,8 +102,12 @@ def build_readme_from_resume(pdf_path: str) -> Dict:
     except Exception as e:
         raise Exception(f"Failed to parse resume: {str(e)}")
 
-def generate_and_save_readme(pdf_path: str, output_path: str = "README.md", 
-                           template: str = "minimal") -> None:
+def generate_and_save_readme(
+    pdf_path: str,
+    output_path: str = "README.md",
+    template: str = "minimal",
+    verbose: bool = False
+) -> Optional[Dict]:
     """
     Generate and save a GitHub profile README from a resume PDF.
     
@@ -107,36 +116,49 @@ def generate_and_save_readme(pdf_path: str, output_path: str = "README.md",
         output_path (str, optional): Path where to save the README.md. Defaults to "README.md"
         template (str, optional): Template style to use ('minimal' or 'modern'). 
                                 Defaults to 'minimal'
+        verbose (bool, optional): If True, returns intermediate data from resume parsing and LLM.
+                                Defaults to False.
+    
+    Returns:
+        Optional[Dict]: If verbose is True, returns a dictionary containing intermediate data:
+            {
+                'resume_text': str,  # Raw text extracted from PDF
+                'structured_data': Dict,  # Structured data extracted by LLM
+                'enhanced_data': Dict,  # Data after LLM enhancement
+            }
+        If verbose is False, returns None
     """
     try:
-        # Extract structured data from resume
-        resume_data = build_readme_from_resume(pdf_path)
+        # Get config instance and validate
+        config = Config()
+        config.validate_config()
         
-        # Generate profile content with specified template
-        profile_content = generate_github_profile(resume_data, template)
+        # Collect intermediate data if verbose
+        verbose_data = {}
         
-        # Save to README.md
-        with open(output_path, 'w') as f:
+        # Load and process resume
+        resume_text = load_resume(pdf_path)
+        if verbose:
+            verbose_data['resume_text'] = resume_text
+            logger.info("Resume text extracted successfully")
+        
+        # Extract structured data
+        structured_data = build_readme_from_resume(pdf_path)
+        if verbose:
+            verbose_data['structured_data'] = structured_data
+            logger.info("Structured data extracted from resume")
+        
+        # Generate profile content
+        profile_content = generate_github_profile(structured_data, template)
+        
+        # Save to file
+        with open(output_path, 'w', encoding='utf-8') as f:
             f.write(profile_content)
             
-        print(f"GitHub profile {output_path} has been generated successfully using {template} template!")
+        logger.info(f"GitHub profile {output_path} has been generated successfully using {template} template!")
+        
+        return verbose_data if verbose else None
         
     except Exception as e:
-        print(f"Error generating profile: {str(e)}")
-
-def main():
-    """Command-line interface for the README builder."""
-    import argparse
-    
-    parser = argparse.ArgumentParser(description="Build GitHub profile README from resume PDF")
-    parser.add_argument("pdf_path", help="Path to the resume PDF file")
-    parser.add_argument("--output", "-o", default="README.md", 
-                      help="Output path for README.md (default: README.md)")
-    parser.add_argument("--template", "-t", choices=["minimal", "modern"], default="minimal",
-                      help="Template style to use (default: minimal)")
-    
-    args = parser.parse_args()
-    generate_and_save_readme(args.pdf_path, args.output, args.template)
-
-if __name__ == "__main__":
-    main()
+        logger.error(f"Error generating profile: {str(e)}")
+        raise

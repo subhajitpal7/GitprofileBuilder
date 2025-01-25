@@ -1,14 +1,14 @@
 
-╔═══╗─────╔╗──────────╔═══╦╗
-║╔═╗║─────║║──────────║╔═╗║║
-║║─╚╬══╦══╣║╔══╦╗╔╦══╗║║─║║║╔══╦═╗
-║║╔═╣╔╗║╔═╣║║╔╗║║║║║═╣║║─║║║║╔╗║╔╗╗
-║╚╩═║╚╝║╚═╣╚╣╚╝║╚╝║║═╣║╚═╝║╚╣╚╝║║║║
-╚═══╩══╩══╩═╩══╩══╩══╝╚═══╩═╩══╩╝╚╝
+██████╗ ██████╗  ██████╗ ███████╗██╗██╗     ███████╗
+██╔══██╗██╔══██╗██╔═══██╗██╔════╝██║██║     ██╔════╝
+██████╔╝██████╔╝██║   ██║█████╗  ██║██║     █████╗  
+██╔═══╝ ██╔══██╗██║   ██║██╔══╝  ██║██║     ██╔══╝  
+██║     ██║  ██║╚██████╔╝██║     ██║███████╗███████╗
+╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝╚══════╝
 
 
-Hi there 👋 I'm Subhajit Pal
-### Crafting innovative software solutions through Python mastery and a passion for problem-solving.
+Greetings, earthling! 👾 I'm Subhajit Pal
+### Engineering innovative software solutions with Python and a touch of creativity!
 
 
 <div align="center">
@@ -16,69 +16,65 @@ Hi there 👋 I'm Subhajit Pal
 </div>
 
 
-> Driven to harness technology's power to create meaningful impact, innovate solutions, and empower others to achieve their full potential in the tech industry.
+> Aspiring to harness the power of technology to create meaningful solutions that empower individuals and drive positive change.
 
 ### 🎯 Current Focus
-- Leveraging AI/ML techniques to enhance software solutions
-- Automating processes to increase efficiency and productivity
-- Integrating DevOps practices for seamless software delivery
+- Pythonic solutions for efficient data processing and automation
+- Leveraging AI/ML for cutting-edge software advancements
+- Automating DevOps processes to enhance team productivity
 
 
-🛠️ Tech Arsenal
+💪 Skills & Expertise
 
 
-### 💡 Innovative Problem-solver
-- Consistently sought opportunities to optimize systems and enhance performance.
-- Developed creative solutions to complex technical challenges, resulting in significant impact.
-- Possess a knack for identifying inefficiencies and implementing effective remedies.
+### 💡Innovation Engine
+- Consistently brainstorming innovative solutions to complex software problems.
+- Passionate about exploring emerging technologies and their application in real-world scenarios.
 
 
-💫 Career Adventures
+🌱 Growth Story
 
-> A collaborative and proactive team player, eager to share knowledge and learn from others. Values open communication, constructive feedback, and a shared commitment to delivering high-quality results.
+> A collaborative team player with a strong belief in open communication and shared ownership. Enjoys brainstorming with colleagues, mentoring junior developers, and contributing to the overall team success.
 
-### 🏢 Software engineer @ Qualcomm India Private Limited
-*02/05/2023 - Current*
+### 🏢 Senior Engineer(GPU InfraOps) @ Qualcomm Pvt. Ltd.
+*May '23 - Present*
 
-- Developed a CLI and Python API for efficient regression management, supporting 100+ developers to run 3,000+ daily regressions.
-- Built a Gen AI-powered chatbot with Prompt Engineering, reducing manual regression data review by 30%.
-- Optimized a GPU binary file app for the Silicon Team, improving page load performance by 3x using caching.
-- Implemented a generic Airflow DAG for file cleanup, minimizing manual infrastructure maintenance.
-- Created a Cookiecutter template with Ruff and Black checkers, streamlining package development and enforcing coding standards.
+- Lead the development and enhancement of tools and infrastructure in alignment with standardized norms.
+- Increased developer throughput, ensuring high efficiency and performance across the team.
 
-### 🏢 Software engineer @ Oracle Cerner (Cerner Healthcare)
-*11/02/2019 - 28/04/2023*
+### 🏢 Software Engineer II(ML Division) @ Oracle Cerner(Formerly Cerner Healthcare)
+*Feb '19 - Apr '23*
 
 - Developed and implemented a topic modeling solution for unstructured confluence wiki-pages, enabling smoother access to documentation.
 - Created and maintained a DevSecOps solution for automated OWASP scanning, adopted across 46 projects organization-wide.
 - Performed a POC on GitHub migration for legacy code from Accurev Version Control System, adopted across 32 projects organization-wide.
 
 
-📚 Education
+📖 Academic Background
 
 ### 🎓 Executive Post Graduate Programme in AI/ML
-*IIIT Bangalore - 2023*
+*IIIT Bangalore - None*
 
-### 🎓 Bachelors in Technology (Computer Science)
-*Meghnad Saha Institute of Technology - 2019*
+### 🎓 B.Tech in Computer Science
+*Maulana Abul Kalam Azad University of Technology - None*
 
 
 ### ⚡ Fun Facts
-- Recently implemented a Gen AI-powered chatbot, reducing manual regression data review by 30%.
-- Developed a CLI and Python API, empowering 100+ developers to run 3,000+ daily regressions.
-- Optimized a GPU binary file app for the Silicon Team, boosting page load performance by 3x.
+- Developed a topic modeling solution that made sense out of thousands of unstructured wiki-pages.
+- Automated OWASP scanning across 46 projects, making security a breeze.
+- Pioneered GitHub migration for legacy code, streamlining version control for 32 projects.
 
 
 ### 📊 GitHub Highlights
-- Regular contributor to open-source projects, showcasing expertise in Python and DevOps.
-- Participated in hackathons and coding challenges, demonstrating problem-solving abilities.
-- Engaged in discussions and provided support within the GitHub community.
+- Actively contributing to open-source projects related to Python, data science, and automation.
+- Sharing knowledge and collaborating with fellow developers on GitHub issues and discussions.
+- Exploring new GitHub features and tools to enhance productivity.
 
 
-📫 Let's Connect
+🤝 Get in Touch
 
 - 📧 Email: jobs.forsubhajit.com@gmail.com
-- 📍 Location: Kolkata, India
+- 📍 Location: Kolkata, IN
 
 <div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username={github_username}&show_icons=true&theme=radical" alt="GitHub Stats" />

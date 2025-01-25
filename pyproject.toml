@@ -14,10 +14,16 @@ dependencies = [
     "python-dotenv>=1.0.0",
     "google-generativeai>=0.3.0",
     "langchain-google-genai>=2.0.7",
+    "click>=8.0.0",
+    "tqdm>=4.66.0",
+    "rich>=13.7.0",
 ]
 requires-python = ">=3.11"
 readme = "README.md"
 license = {text = "MIT"}
+
+[project.scripts]
+gitprofile = "main:main"
 
 [build-system]
 requires = ["pdm-backend"]
