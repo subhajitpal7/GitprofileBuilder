@@ -4,6 +4,7 @@ This module handles the process of extracting information from resumes and gener
 attractive GitHub profile READMEs.
 """
 
+import logging
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_community.document_loaders import PyPDFium2Loader
 from langchain_core.output_parsers import JsonOutputParser
@@ -11,6 +12,9 @@ from langchain_core.prompts import PromptTemplate
 from typing import Dict
 from gitprofilebuilder.profile_generator import generate_github_profile
 from gitprofilebuilder.config import Config
+
+# Set up logging
+logger = logging.getLogger(__name__)
 
 def load_resume(pdf_path: str) -> str:
     """
@@ -112,31 +116,15 @@ def generate_and_save_readme(pdf_path: str, output_path: str = "README.md",
         # Extract structured data from resume
         resume_data = build_readme_from_resume(pdf_path)
         
-        # Generate profile content with specified template
+        # Generate profile content
         profile_content = generate_github_profile(resume_data, template)
         
-        # Save to README.md
-        with open(output_path, 'w') as f:
+        # Save to file
+        with open(output_path, 'w', encoding='utf-8') as f:
             f.write(profile_content)
             
-        print(f"GitHub profile {output_path} has been generated successfully using {template} template!")
+        logger.info(f"GitHub profile {output_path} has been generated successfully using {template} template!")
         
     except Exception as e:
-        print(f"Error generating profile: {str(e)}")
-
-def main():
-    """Command-line interface for the README builder."""
-    import argparse
-    
-    parser = argparse.ArgumentParser(description="Build GitHub profile README from resume PDF")
-    parser.add_argument("pdf_path", help="Path to the resume PDF file")
-    parser.add_argument("--output", "-o", default="README.md", 
-                      help="Output path for README.md (default: README.md)")
-    parser.add_argument("--template", "-t", choices=["minimal", "modern"], default="minimal",
-                      help="Template style to use (default: minimal)")
-    
-    args = parser.parse_args()
-    generate_and_save_readme(args.pdf_path, args.output, args.template)
-
-if __name__ == "__main__":
-    main()
+        logger.error(f"Error generating profile: {str(e)}")
+        raise
