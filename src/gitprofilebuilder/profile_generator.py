@@ -2,7 +2,18 @@ from typing import Dict
 import json
 
 class GitHubProfileGenerator:
+    """
+    A utility class for generating GitHub profile README.md content from structured resume data.
+    This class is designed to be used as a helper by the resume parser module.
+    """
+    
     def __init__(self, resume_data: Dict):
+        """
+        Initialize the profile generator with resume data.
+        
+        Args:
+            resume_data (Dict): Structured resume data containing personal info, skills, experience, etc.
+        """
         self.resume_data = resume_data
 
     def generate_header(self) -> str:
@@ -109,27 +120,15 @@ class GitHubProfileGenerator:
         return "\n".join(section for section in sections if section)
 
 def generate_github_profile(resume_data: Dict) -> str:
-    """Generate a GitHub profile README from resume data."""
+    """
+    Utility function to generate a GitHub profile README from resume data.
+    This is the main entry point for profile generation.
+    
+    Args:
+        resume_data (Dict): Structured resume data containing personal info, skills, experience, etc.
+        
+    Returns:
+        str: Generated GitHub profile README content in markdown format
+    """
     generator = GitHubProfileGenerator(resume_data)
     return generator.generate_profile()
-
-def main():
-    # For testing purposes
-    resume_json_path = input("Enter the path to the resume JSON file: ")
-    try:
-        with open(resume_json_path, 'r') as f:
-            resume_data = json.load(f)
-        
-        profile_content = generate_github_profile(resume_data)
-        
-        # Save to README.md
-        with open('README.md', 'w') as f:
-            f.write(profile_content)
-            
-        print("GitHub profile README.md has been generated successfully!")
-        
-    except Exception as e:
-        print(f"Error generating profile: {str(e)}")
-
-if __name__ == "__main__":
-    main() 

@@ -5,7 +5,7 @@ Experienced Python Developer with 5+ years of experience in designing and buildi
 ## 🛠️ Skills
 
 ### Technical Skills
-`Python Programming` | `Data Processing` | `Automation` | `Database (MySQL, SQLAlchemy, MongoDB)` | `SDLC in Agile methodologies` | `Postgres Database` | `Git & Githubs` | `Docker` | `Jenkins` | `Linux (Server)` | `Kubernetes` | `Apache Airflow` | `Data Science` | `Data Collection` | `Data Analysis` | `Data Visualization`
+`Python` | `Data Processing` | `Automation` | `MySQL` | `SQLAlchemy` | `MongoDB` | `SDLC in Agile methodologies` | `Postgres Database` | `Git` | `GitHub` | `Data Science` | `Data Collection` | `Data Analysis` | `Data Visualisation` | `DevOps` | `Docker` | `Jenkins` | `Linux (Server)` | `Kubernetes` | `Apache Airflow`
 
 ### Soft Skills
 `Mentorship` | `Technical Advisor`
@@ -13,7 +13,7 @@ Experienced Python Developer with 5+ years of experience in designing and buildi
 ## 💼 Experience
 
 ### Software Engineer at Qualcomm India Private Limited
-*February 2023 - Present*
+*02/05/2023 - Current*
 
 - Developed a CLI and Python API for efficient regression management, supporting 100+ developers to run 3,000+ daily regressions.
 - Built a Gen AI-powered chatbot with Prompt Engineering, reducing manual regression data review by 30%.
@@ -22,7 +22,7 @@ Experienced Python Developer with 5+ years of experience in designing and buildi
 - Created a Cookiecutter template with Ruff and Black checkers, streamlining package development and enforcing coding standards.
 
 ### Software Engineer at Oracle Cerner (Cerner Healthcare)
-*November 2019 - April 2023*
+*11/02/2019 - 28/04/2023*
 
 - Developed and implemented a topic modeling solution for unstructured confluence wiki-pages, enabling smoother access to documentation.
 - Created and maintained a DevSecOps solution for automated OWASP scanning, adopted across 46 projects organization-wide.
@@ -38,12 +38,7 @@ IIIT Bangalore - 2023
 Meghnad Saha Institute of Technology - 2019
 
 
-## 📜 Certifications
-
-- THANKQ
-- Bravo Award
-
 ## 📫 How to reach me
 
 - 📧 Email: jobs.forsubhajit.com@gmail.com
-- 📍 Location: Kolkata, India
+- 📍 Location: Bengaluru, India
