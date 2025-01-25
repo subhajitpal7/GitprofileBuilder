@@ -1,211 +1,244 @@
 """
-GitHub Profile README Generator with dynamic templates and LLM enhancement.
+Profile data generator for GitHub README profiles.
 """
 
+import json
+import logging
 from typing import Dict, Optional
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.prompts import PromptTemplate
+from pathlib import Path
+
+from langchain_google_genai import GoogleGenerativeAI
 from langchain_core.output_parsers import JsonOutputParser
-from gitprofilebuilder.templates import get_template
-from gitprofilebuilder.config import Config
+from langchain.prompts import PromptTemplate
+from langchain_community.document_loaders import PyPDFium2Loader
 
-class GitHubProfileGenerator:
-    """
-    A utility class for generating GitHub profile README.md content from structured resume data.
-    This class is designed to be used as a helper by the resume parser module.
-    """
-    
-    def __init__(self, resume_data: Dict):
-        """
-        Initialize the profile generator with resume data.
-        
-        Args:
-            resume_data (Dict): Structured resume data containing personal info, skills, experience, etc.
-        """
-        self.resume_data = resume_data
+from .config import Config
 
-    def generate_header(self) -> str:
-        """Generate the header section with personal info and summary."""
-        name = self.resume_data["personal_info"]["name"]
-        summary = self.resume_data["summary"]
-        
-        return f"""# Hi there 👋, I'm {name}
+# Set up logging
+logger = logging.getLogger(__name__)
 
-{summary}
+# Define improved prompt templates
+STRUCTURED_DATA_PROMPT = """
+Analyze the following resume text and extract key information in a structured format.
+
+Resume Text:
+{resume_text}
+
+Extract and return ONLY a JSON object with the following structure. Keep all text in a single line without line breaks:
+{{
+    "personal_info": {{
+        "name": "Full name of the person",
+        "email": "Email address if available",
+        "phone": "Phone number if available",
+        "location": "Location if available"
+    }},
+    "summary": "Professional summary or objective",
+    "work_experience": [
+        {{
+            "company": "Company name",
+            "title": "Job title",
+            "duration": "Employment period",
+            "responsibilities": ["Key responsibilities and achievements"]
+        }}
+    ],
+    "education": [
+        {{
+            "degree": "Degree name",
+            "institution": "Institution name",
+            "graduation_year": "Year of graduation"
+        }}
+    ],
+    "skills": {{
+        "technical_skills": ["List of technical skills"],
+        "soft_skills": ["List of soft skills"]
+    }},
+    "certifications": ["List of certifications if any"]
+}}
+
+Focus on extracting the most relevant and impressive information that would make a great GitHub profile.
+Ensure all dates and durations are properly formatted.
+For work experience, highlight achievements and impactful contributions.
+For technical skills, group them by relevance and expertise level.
+Keep all text responses concise and in a single line.
 """
 
-    def generate_skills_section(self) -> str:
-        """Generate the skills section."""
-        tech_skills = self.resume_data["skills"]["technical_skills"]
-        soft_skills = self.resume_data["skills"]["soft_skills"]
-        
-        skills_section = "## 🛠️ Skills\n\n"
-        
-        if tech_skills:
-            skills_section += "### Technical Skills\n"
-            skills_section += " | ".join(f"`{skill}`" for skill in tech_skills)
-            skills_section += "\n\n"
-        
-        if soft_skills:
-            skills_section += "### Soft Skills\n"
-            skills_section += " | ".join(f"`{skill}`" for skill in soft_skills)
-            skills_section += "\n"
-            
-        return skills_section
+ENHANCEMENT_PROMPT = """
+Enhance this GitHub profile data with additional sections and improvements.
+Make it engaging and memorable while maintaining professionalism.
 
-    def generate_experience_section(self) -> str:
-        """Generate the work experience section."""
-        experience = self.resume_data["work_experience"]
-        
-        if not experience:
-            return ""
-            
-        exp_section = "## 💼 Experience\n\n"
-        
-        for job in experience:
-            exp_section += f"### {job['title']} at {job['company']}\n"
-            exp_section += f"*{job['duration']}*\n\n"
-            
-            if job['responsibilities']:
-                for resp in job['responsibilities']:
-                    exp_section += f"- {resp}\n"
-            exp_section += "\n"
-            
-        return exp_section
+Profile Data:
+{profile_data}
 
-    def generate_education_section(self) -> str:
-        """Generate the education section."""
-        education = self.resume_data["education"]
-        
-        if not education:
-            return ""
-            
-        edu_section = "## 🎓 Education\n\n"
-        
-        for edu in education:
-            edu_section += f"### {edu['degree']}\n"
-            edu_section += f"{edu['institution']} - {edu['graduation_year']}\n\n"
-            
-        return edu_section
-
-    def generate_certifications_section(self) -> str:
-        """Generate the certifications section."""
-        certs = self.resume_data["certifications"]
-        
-        if not certs:
-            return ""
-            
-        cert_section = "## 📜 Certifications\n\n"
-        for cert in certs:
-            cert_section += f"- {cert}\n"
-            
-        return cert_section
-
-    def generate_contact_section(self) -> str:
-        """Generate the contact section."""
-        info = self.resume_data["personal_info"]
-        
-        contact_section = "## 📫 How to reach me\n\n"
-        
-        if info.get("email"):
-            contact_section += f"- 📧 Email: {info['email']}\n"
-        if info.get("location"):
-            contact_section += f"- 📍 Location: {info['location']}\n"
-            
-        return contact_section
-
-    def generate_profile(self) -> str:
-        """Generate the complete GitHub profile README."""
-        sections = [
-            self.generate_header(),
-            self.generate_skills_section(),
-            self.generate_experience_section(),
-            self.generate_education_section(),
-            self.generate_certifications_section(),
-            self.generate_contact_section()
-        ]
-        
-        return "\n".join(section for section in sections if section)
-
-def enhance_content_with_llm(resume_data: Dict) -> Dict:
-    """
-    Use LLM to enhance resume data with creative and personalized content.
-    
-    Args:
-        resume_data (Dict): Original resume data
-        
-    Returns:
-        Dict: Enhanced resume data with additional creative elements
-    """
-    template = """
-    You are a creative GitHub profile enhancer. Given the following resume data, generate engaging and personalized content
-    to make the GitHub profile more attractive and memorable. Keep the tone professional yet friendly.
-    
-    Resume Text:
-    {resume_data}
-    
-    Please enhance this data by adding the following elements in JSON format:
-    {{
+Return ONLY a JSON object with the following structure. Keep all text in a single line without line breaks:
+{{
+    "enhanced": {{
         "tagline": "A creative one-liner that captures their essence as a developer",
-        "fun_facts": ["3-4 interesting facts about their skills, experience, or interests"],
-        "current_focus": ["2-3 areas they're currently focusing on, based on their skills and experience"],
+        "impact_statement": "A powerful statement about their potential impact in tech",
+        "current_focus": ["2-3 areas they're currently focusing on"],
+        "collaboration_style": "A brief description of their collaboration approach",
+        "github_activity_highlights": ["3-4 key points about GitHub activity"],
+        "fun_facts": ["3-4 interesting facts"],
+        "skill_categories": {{
+            "category_name": ["Grouped skills from technical_skills"],
+            "expertise_levels": ["Map of skills to expertise levels"]
+        }},
         "custom_sections": [
             {{
-                "title": "Creative section title with emoji",
-                "content": ["2-3 interesting points for this section"]
+                "title": "Section title with emoji",
+                "content": ["2-3 points for this section"]
             }}
-        ],
-        "skill_categories": {{
-            "category_name": ["grouped skills from their technical_skills, max 3 categories"],
-            "expertise_levels": ["map of key skills to expertise levels like 'Expert', 'Advanced', 'Growing'"]
-        }},
-        "github_activity_highlights": ["3 key points about potential GitHub activity based on their background"],
-        "collaboration_style": "A brief description of their likely collaboration style based on their experience",
-        "impact_statement": "A powerful statement about their potential impact in tech"
+        ]
     }}
-    
-    Make the content engaging but factual, based on their actual experience and skills.
-    """
-    
-    try:
-        # Get config instance
-        config = Config()
-        
-        # Setup LLM chain
-        prompt = PromptTemplate(template=template, input_variables=["resume_data"])
-        llm = ChatGoogleGenerativeAI(model="gemini-pro")
-        chain = prompt | llm | JsonOutputParser()
-        
-        # Get enhanced content
-        enhanced_data = chain.invoke({"resume_data": str(resume_data)})
-        
-        # Merge enhanced data with original resume data
-        resume_data["enhanced"] = enhanced_data
-        return resume_data
-        
-    except Exception as e:
-        print(f"Warning: LLM enhancement failed: {str(e)}")
-        # Return original data if enhancement fails
-        return resume_data
+}}
 
-def generate_github_profile(resume_data: Dict, template_name: str = "minimal") -> str:
-    """
-    Generate a GitHub profile README from resume data using specified template
-    and LLM enhancement.
+Make the content engaging but factual, based on their actual experience and skills.
+Keep all responses concise and in a single line without line breaks.
+"""
+
+class ProfileGenerator:
+    """Generates GitHub profile data from resume."""
     
-    Args:
-        resume_data (Dict): Structured resume data containing personal info, skills, experience, etc.
-        template_name (str, optional): Name of template to use ('minimal' or 'modern'). 
-                                     Defaults to 'minimal'.
+    def __init__(self, verbose: bool = False):
+        """
+        Initialize the profile generator with configuration.
         
-    Returns:
-        str: Generated GitHub profile README content in markdown format
-    """
-    # First enhance the content using LLM
-    enhanced_data = enhance_content_with_llm(resume_data)
+        Args:
+            verbose (bool): Whether to show detailed logging messages
+        """
+        self.config = Config()
+        self.config.validate_config()
+        
+        # Initialize model
+        self.llm = GoogleGenerativeAI(
+            model="gemini-pro",
+            google_api_key=self.config.GOOGLE_API_KEY,
+            temperature=0.7
+        )
+        
+        # Store intermediate data
+        self.resume_text: Optional[str] = None
+        self.structured_data: Optional[Dict] = None
+        self.verbose = verbose
+        
+        # Set logging level based on verbose flag
+        logger.setLevel(logging.INFO if verbose else logging.ERROR)
     
-    # Get the specified template
-    template = get_template(template_name)
+    def _log_info(self, message: str) -> None:
+        """Log info message only if verbose mode is enabled."""
+        if self.verbose:
+            logger.info(message)
     
-    # Generate profile content using the template and enhanced data
-    return template.generate(enhanced_data)
+    def _log_error(self, message: str) -> None:
+        """Log error message."""
+        logger.error(message)
+    
+    def extract_resume_text(self, resume_path: str) -> str:
+        """
+        Extract text from a PDF resume.
+        
+        Args:
+            resume_path (str): Path to the resume PDF file
+        
+        Returns:
+            str: Extracted text from the resume
+        """
+        try:
+            loader = PyPDFium2Loader(resume_path)
+            pages = loader.load()
+            self.resume_text = "\n".join(page.page_content for page in pages)
+            self._log_info("Successfully extracted text from resume")
+            return self.resume_text
+        except Exception as e:
+            self._log_error(f"Failed to extract text from resume: {str(e)}")
+            raise
+    
+    def _clean_json_response(self, response: str) -> Dict:
+        """Clean and parse JSON response from LLM."""
+        try:
+            # Remove any potential markdown code block markers
+            response = response.replace("```json", "").replace("```", "").strip()
+            # Parse the JSON
+            return json.loads(response)
+        except json.JSONDecodeError as e:
+            self._log_error(f"Failed to parse JSON response: {str(e)}")
+            raise
+    
+    def extract_structured_data(self) -> Dict:
+        """
+        Extract structured data from resume text using LLM.
+        
+        Returns:
+            Dict: Structured data containing personal info, skills, experience, etc.
+        """
+        if not self.resume_text:
+            raise ValueError("Resume text not extracted yet. Call extract_resume_text first.")
+        
+        try:
+            # Generate structured data
+            prompt = PromptTemplate(
+                input_variables=["resume_text"],
+                template=STRUCTURED_DATA_PROMPT
+            )
+            
+            response = self.llm.invoke(prompt.format(resume_text=self.resume_text))
+            self.structured_data = self._clean_json_response(response)
+            self._log_info("Successfully extracted structured data")
+            return self.structured_data
+        except Exception as e:
+            self._log_error(f"Failed to extract structured data: {str(e)}")
+            raise
+    
+    def enhance_profile_data(self) -> Dict:
+        """
+        Enhance profile data with additional sections and improvements using LLM.
+        
+        Returns:
+            Dict: Enhanced profile data with additional sections
+        """
+        if not self.structured_data:
+            raise ValueError("Structured data not extracted yet. Call extract_structured_data first.")
+        
+        try:
+            # Generate enhanced data
+            prompt = PromptTemplate(
+                input_variables=["profile_data"],
+                template=ENHANCEMENT_PROMPT
+            )
+            
+            response = self.llm.invoke(prompt.format(profile_data=json.dumps(self.structured_data)))
+            enhanced_data = self._clean_json_response(response)
+            
+            # Merge enhanced data with original
+            self.structured_data.update(enhanced_data)
+            self._log_info("Successfully enhanced profile data")
+            return self.structured_data
+        except Exception as e:
+            self._log_error(f"Failed to enhance profile data: {str(e)}")
+            raise
+    
+    def generate_profile(self, resume_path: str) -> Dict:
+        """
+        Generate complete profile data from resume.
+        
+        Args:
+            resume_path (str): Path to the resume PDF file
+        
+        Returns:
+            Dict: Complete profile data ready for template rendering
+        """
+        try:
+            # Extract text from resume
+            self.extract_resume_text(resume_path)
+            
+            # Extract structured data
+            self.extract_structured_data()
+            
+            # Enhance profile data
+            profile_data = self.enhance_profile_data()
+            
+            self._log_info("Successfully generated complete profile")
+            return profile_data
+            
+        except Exception as e:
+            self._log_error(f"Failed to generate profile: {str(e)}")
+            raise

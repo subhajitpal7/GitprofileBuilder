@@ -31,7 +31,7 @@ class Config(metaclass=Singleton):
         load_dotenv()
         
         # Google API settings
-        self._google_api_key: Optional[str] = os.getenv("GOOGLE_API_KEY")
+        self._GOOGLE_API_KEY: Optional[str] = os.getenv("GOOGLE_API_KEY")
         
         # Optional API keys for other services
         self._huggingface_api_key: Optional[str] = os.getenv("HUGGINGFACE_API_KEY")
@@ -42,7 +42,7 @@ class Config(metaclass=Singleton):
     @property
     def GOOGLE_API_KEY(self) -> str:
         """Get Google API key."""
-        return self._google_api_key
+        return self._GOOGLE_API_KEY
     
     @property
     def HUGGINGFACE_API_KEY(self) -> Optional[str]:
@@ -51,19 +51,19 @@ class Config(metaclass=Singleton):
     
     def validate_config(self) -> None:
         """Validate that all required environment variables are set."""
-        if not self._google_api_key:
+        if not self._GOOGLE_API_KEY:
             raise ValueError("GOOGLE_API_KEY environment variable is not set")
     
     def reload(self) -> None:
         """Reload configuration from environment variables."""
         load_dotenv()
-        self._google_api_key = os.getenv("GOOGLE_API_KEY")
+        self._GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
         self._huggingface_api_key = os.getenv("HUGGINGFACE_API_KEY")
         self.validate_config()
     
     def __str__(self) -> str:
         """String representation of config state."""
-        return (f"Config(google_api_key={'*' * 8 if self._google_api_key else 'Not Set'}, "
+        return (f"Config(google_api_key={'*' * 8 if self._GOOGLE_API_KEY else 'Not Set'}, "
                 f"huggingface_api_key={'*' * 8 if self._huggingface_api_key else 'Not Set'})")
     
     def __repr__(self) -> str:
