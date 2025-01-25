@@ -7,35 +7,34 @@
 ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝╚══════╝
 
 
-Hi there 👋 I'm Subhajit Pal
-### Python wizard, automating the world, one line of code at a time!
+Greetings, earthling! 👾 I'm Subhajit Pal
+### Engineering innovative software solutions with Python and a touch of creativity!
 
 
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=2E97F7&center=true&vCenter=true&width=435&lines=Software+Engineer;Problem+Solver;Continuous+Learner" alt="Typing SVG" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=&theme=dark" alt="GitHub Streak" />
 </div>
 
 
-> Driven by a passion for technology, I strive to create innovative solutions that empower businesses and drive meaningful change in the world.
+> Aspiring to harness the power of technology to create meaningful solutions that empower individuals and drive positive change.
 
 ### 🎯 Current Focus
-- Optimizing software performance and efficiency with Python.
-- Developing data processing pipelines to unlock valuable insights.
-- Exploring the potential of AI/ML for innovative solutions.
+- Pythonic solutions for efficient data processing and automation
+- Leveraging AI/ML for cutting-edge software advancements
+- Automating DevOps processes to enhance team productivity
 
 
-⚡ Superpowers
+💪 Skills & Expertise
 
 
-### 🌟 DevSecOps Champion 🌟
-- Championed DevSecOps practices, implementing a solution adopted across 46 projects organization-wide.
-- Automated OWASP scanning, enhancing software security and compliance.
-- Conducted GitHub migration for legacy code, streamlining version control and collaboration.
+### 💡Innovation Engine
+- Consistently brainstorming innovative solutions to complex software problems.
+- Passionate about exploring emerging technologies and their application in real-world scenarios.
 
 
-💫 Career Adventures
+🌱 Growth Story
 
-> As a team player, I believe in open communication, constructive feedback, and a shared commitment to excellence. I'm always eager to learn from others and contribute my expertise to achieve common goals.
+> A collaborative team player with a strong belief in open communication and shared ownership. Enjoys brainstorming with colleagues, mentoring junior developers, and contributing to the overall team success.
 
 ### 🏢 Senior Engineer(GPU InfraOps) @ Qualcomm Pvt. Ltd.
 *May '23 - Present*
@@ -51,7 +50,7 @@ Hi there 👋 I'm Subhajit Pal
 - Performed a POC on GitHub migration for legacy code from Accurev Version Control System, adopted across 32 projects organization-wide.
 
 
-🎓 Academic Journey
+📖 Academic Background
 
 ### 🎓 Executive Post Graduate Programme in AI/ML
 *IIIT Bangalore - None*
@@ -61,18 +60,18 @@ Hi there 👋 I'm Subhajit Pal
 
 
 ### ⚡ Fun Facts
-- Solved an impossible Python puzzle in under 10 minutes, leaving everyone in awe!
-- Developed a Python script that writes poetry, generating sonnets that would make Shakespeare jealous.
-- Consistently score in the top 1% on Python coding challenges, proving that I'm a master of the craft.
+- Developed a topic modeling solution that made sense out of thousands of unstructured wiki-pages.
+- Automated OWASP scanning across 46 projects, making security a breeze.
+- Pioneered GitHub migration for legacy code, streamlining version control for 32 projects.
 
 
 ### 📊 GitHub Highlights
-- Actively contributing to open-source projects, demonstrating a commitment to the tech community.
-- Regularly sharing knowledge and insights through blog posts and code snippets.
-- Engaging in discussions and collaborating with other developers to find innovative solutions.
+- Actively contributing to open-source projects related to Python, data science, and automation.
+- Sharing knowledge and collaborating with fellow developers on GitHub issues and discussions.
+- Exploring new GitHub features and tools to enhance productivity.
 
 
-🌐 Find Me Online
+🤝 Get in Touch
 
 - 📧 Email: jobs.forsubhajit.com@gmail.com
 - 📍 Location: Kolkata, IN
